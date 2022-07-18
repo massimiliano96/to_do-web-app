@@ -1418,7 +1418,10 @@ name = "todo_web_app"
 version = "0.1.0"
 dependencies = [
  "actix-rt",
+ "actix-service",
  "actix-web",
+ "futures",
+ "serde",
  "serde_json",
 ]
 
