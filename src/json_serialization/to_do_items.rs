@@ -41,7 +41,7 @@ impl Responder for ToDoItems {
     type Error = Error;
     type Future = Ready<Result<HttpResponse, Error>>;
 
-    fn respond_to(self, req: &HttpRequest) -> Self::Future {
+    fn respond_to(self, _req: &HttpRequest) -> Self::Future {
         let body = serde_json::to_string(&self).unwrap();
         ready(Ok(HttpResponse::Ok().content_type("application/json").body(body)))
     }
