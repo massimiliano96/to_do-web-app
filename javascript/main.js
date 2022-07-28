@@ -1,5 +1,6 @@
 function renderItems(items, processType, elementId, processFunction) {
     console.log("renderItems starts");
+    console.log(items);
     let placeholder = "<div>";
     let itemsMeta = []; //we place the items title in order to add listener later on
     for(i = 0; i < items.length; i++) {
@@ -7,13 +8,13 @@ function renderItems(items, processType, elementId, processFunction) {
         let placeholderId = processType + "-" + title.replace(" ", "-");
         placeholder += "<div>" + title + "<button " + 'id="' + placeholderId + '">' +
             processType + '</button>' + "</div>";
-        itemsMeta.push({"id": placeholderId, "title":title});
-        placeholder += "</div>";
-        document.getElementById(elementId).innerHTML = placeholder;
+        itemsMeta.push({"id": placeholderId, "title": title});
+    }
+    placeholder += "</div>";
+    document.getElementById(elementId).innerHTML = placeholder;
 
-        for (i = 0; i < itemsMeta.length; i++) {
-            document.getElementById(itemsMeta[i]["id"]).addEventListener("click", processFunction);
-        }
+    for (i = 0; i < itemsMeta.length; i++) {
+        document.getElementById(itemsMeta[i]["id"]).addEventListener("click", processFunction);
     }
     console.log("renderItems ends");
 }
