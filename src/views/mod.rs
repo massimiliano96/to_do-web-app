@@ -6,7 +6,6 @@ mod app;
 pub mod token;
 
 pub fn views_factory(app: &mut web::ServiceConfig) {
-    println!("views factory called");
     auth::auth_factory(app);
     to_do::item_factory(app);
     app::app_factory(app);

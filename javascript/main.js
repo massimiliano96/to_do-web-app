@@ -1,4 +1,5 @@
 function renderItems(items, processType, elementId, processFunction) {
+    console.log("renderItems starts");
     let placeholder = "<div>";
     let itemsMeta = []; //we place the items title in order to add listener later on
     for(i = 0; i < items.length; i++) {
@@ -14,6 +15,7 @@ function renderItems(items, processType, elementId, processFunction) {
             document.getElementById(itemsMeta[i]["id"]).addEventListener("click", processFunction);
         }
     }
+    console.log("renderItems ends");
 }
 
 function apiCall(url, method) {
@@ -21,8 +23,10 @@ function apiCall(url, method) {
     xhr.withCredentials = true;
     xhr.addEventListener('readystatechange', function () {
         if (this.readyState == this.DONE) {
+            console.log("pre parse : " + this.responseText);
             renderItems(JSON.parse(this.responseText)["pending_items"], "edit", "pendingItems", editItem);
             renderItems(JSON.parse(this.responseText)["done_items"], "delete", "doneItems", deleteItem);
+            console.log("post parse");
         }
     });
     xhr.open(method, url);
