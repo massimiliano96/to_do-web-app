@@ -1,4 +1,3 @@
-use actix_web::web::to;
 use crate::diesel;
 use diesel::prelude::*;
 
